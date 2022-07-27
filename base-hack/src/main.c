@@ -216,6 +216,7 @@ void earlyFrame(void) {
 	}
 	handle_WTI();
 	adjust_galleon_water();
+	toggleModel();
 	if ((CurrentMap == MAIN_MENU) && (ObjectModel2Timer < 5)) {
 		FileScreenDLCode_Write();
 	}
@@ -231,6 +232,54 @@ void earlyFrame(void) {
 			}
 		}
 	}
+}
+
+static const unsigned char model_indexes[] = {
+	0x19,
+	0x1E,
+	0x20,
+	0x21,
+	0x22,
+	0x23,
+	0x24,
+	0x26,
+	0x27,
+	0x2E,
+	0x30,
+	0x34,
+	0x3E,
+	0x42,
+	0x47,
+	0x4B,
+	0x4D,
+	0x51,
+	0x54,
+	0x62,
+	0x69,
+	0x70,
+	0x72,
+	0x96,
+	0xB0,
+	0xB1,
+	0xBD,
+};
+void toggleModel(void) {
+	if (CurrentModel == 0) {
+		CurrentModel = model_indexes[0];
+	}
+	if (NewlyPressedControllerInput.Buttons & L_Button) {
+		int prev_model = CurrentModel;
+		for (int i = 0; i < sizeof(model_indexes); i++) {
+			if (prev_model >= model_indexes[i]) {
+				if ((i + 1) == sizeof(model_indexes)) {
+					CurrentModel = model_indexes[0];
+				} else {
+					CurrentModel = model_indexes[i+1];
+				}
+			}
+		}
+	}
+
 }
 
 static char fpsStr[15] = "";
@@ -292,15 +341,8 @@ int* displayListModifiers(int* dl) {
 			dl = drawPixelTextContainer(dl, wait_x_offsets[(int)wait_progress_master], 130, (char*)wait_texts[(int)wait_progress_master], 0xFF, 0xFF, 0xFF, 0xFF, 1);
 			dl = drawPixelTextContainer(dl, 110, 150, "PLEASE WAIT", 0xFF, 0xFF, 0xFF, 0xFF, 1);
 		} else {
-			if (Rando.fps_on) {
-				float fps = HERTZ;
-				if (current_avg_lag != 0) {
-					fps = HERTZ / current_avg_lag;
-				}
-				int fps_int = fps;
-				dk_strFormat((char *)fpsStr, "FPS %d", fps_int);
-				dl = drawPixelTextContainer(dl, 250, 210, fpsStr, 0xFF, 0xFF, 0xFF, 0xFF, 1);
-			}
+			dk_strFormat((char *)fpsStr, "MODEL 0X%2X", CurrentModel);
+			dl = drawPixelTextContainer(dl, 210, 210, fpsStr, 0xFF, 0xFF, 0xFF, 0xFF, 1);
 			if (Rando.dpad_visual_enabled) {
 				dl = drawDPad(dl);
 			}

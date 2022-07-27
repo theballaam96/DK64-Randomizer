@@ -193,8 +193,17 @@ TextHandlerHook:
 GuardDeathHandleHook:
 	J 	GuardDeathHandle
 	NOP
+KlaptrapModelHandlerHook:
+	J 	KlaptrapModelHandler
+	NOP
 
 loadExtraHooks:
+	LUI t3, hi(KlaptrapModelHandlerHook)
+	LW t3, lo(KlaptrapModelHandlerHook) (t3)
+	LUI t4, 0x806D
+	SW t3, 0x8B40 (t4) // Store Hook
+	SW r0, 0x8B44 (t4) // Store NOP
+
 	LUI t3, hi(InstanceScriptHook)
 	LW t3, lo(InstanceScriptHook) (t3)
 	LUI t4, 0x8064

@@ -287,6 +287,15 @@ def modify(file_name, map_index):
                         }
                     )
                 added_helm_faces = True
+            elif map_index == 0x22 and obj_id == 11:
+                temp = []
+                for y in range(0x38):
+                    temp.append(byte_stream[y])
+                byte_stream = temp.copy()
+                writedatatoarr(byte_stream, int(float_to_hex(2754.756), 16), 4, 0x0)
+                writedatatoarr(byte_stream, int(float_to_hex(500), 16), 4, 0x4)
+                writedatatoarr(byte_stream, int(float_to_hex(2224.931), 16), 4, 0x8)
+                writedatatoarr(byte_stream, 0x68, 2, 0x12)
             elif map_index == 0x56 and not added_5di_strongkong:
                 added_actor.append(
                     {

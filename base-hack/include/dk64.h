@@ -369,3 +369,4 @@ extern unsigned char ShorterBosses;
 extern char ForceStandardAmmo;
 extern char KKOPhaseRandoOn;
 extern char KKOPhaseOrder[3];
+extern unsigned char CurrentModel;

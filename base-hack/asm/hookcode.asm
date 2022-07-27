@@ -1139,7 +1139,11 @@ START_HOOK:
 			J 	0x8070E844
 			LUI at, 0xFDFF
 
-		
+	KlaptrapModelHandler:
+		LUI 	a1, hi(CurrentModel)
+		LBU 	a1, lo(CurrentModel) (a1)
+		J 		0x806C8B48
+		LW 		t4, 0x60 (v0)
 
 .align 0x10
 END_HOOK:

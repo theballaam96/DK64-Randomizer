@@ -353,6 +353,7 @@
 .definelabel ForceStandardAmmo, 0x807FFFE4
 .definelabel KKOPhaseRandoOn, 0x807FFFE0
 .definelabel KKOPhaseOrder, 0x807FFFE1
+.definelabel CurrentModel, 0x807FFEFF
 
 .definelabel CrankyMoves_New, 0x807FF400
 .definelabel CandyMoves_New, 0x807FF4F0

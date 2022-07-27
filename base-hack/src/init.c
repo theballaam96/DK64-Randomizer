@@ -239,8 +239,8 @@ void initHack(int source) {
 				}
 			}
 			KKOPhaseRandoOn = kko_phase_rando;
-			*(short*)(0x806F0376) = Rando.klaptrap_color_bbother;
-			*(short*)(0x806C8B42) = Rando.klaptrap_color_bbother;
+			// *(short*)(0x806F0376) = Rando.klaptrap_color_bbother;
+			// *(short*)(0x806C8B42) = Rando.klaptrap_color_bbother;
 			// Expand Display List
 			*(short*)(0x805FE56A) = 8000;
 			// Object Instance Scripts
