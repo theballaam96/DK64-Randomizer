@@ -23,7 +23,7 @@ TranslationDB = {
     },
     Translations.Wrinkly_TrapBubble: {
         Languages.English: ["Holding up-left when trapped inside of a trap bubble will break you out of it without spinning your stick."],
-        Languages.FrenchCA: ["Tenir haut-gauche quand vous �tes pris dans une bulle piegee va vous sortir de la sans virer le joystick."],
+        Languages.FrenchCA: ["Tenir haut-gauche quand vous etes pris dans une bulle piegee va vous sortir de la sans virer le joystick."],
     },
     Translations.Wrinkly_TinyDixie: {
         Languages.English: ["Tiny Kong is the youngest sister of Dixie Kong."],
