@@ -6,6 +6,8 @@ import js
 from randomizer.Lists.WrinklyHints import HintLocation, hints
 from randomizer.Patching.Patcher import ROM
 from randomizer.Enums.Kongs import Kongs
+from randomizer.Enums.Translations import Translations
+from randomizer.Lists.Translations import TranslationDB, TranslationInfo
 
 
 def writeWrinklyHints(file_start_offset, text):
@@ -99,3 +101,22 @@ def wipeHints():
     for x in range(len(hints)):
         if hints[x].kong != Kongs.any:
             hints[x].hint = ""
+
+
+def ConvertHint(translation_entry: Translations, params: list) -> str:
+    """Convert a text entry based on a translation with optional parameters."""
+    param_index = 0
+    language = TranslationInfo["language_name"]
+    text_entry = TranslationDB[translation_entry][language]
+    if len(text_entry) == 1:
+        return text_entry[0]
+    elif len(text_entry) > 1:
+        text = ""
+        for subtext in text_entry:
+            if subtext == "~":  # Param character
+                text += str(params[param_index])
+                param_index += 1
+            else:
+                text += str(subtext)
+        return text
+    return ""
