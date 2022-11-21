@@ -1441,7 +1441,7 @@ def FillKongsAndMoves(spoiler):
     settingsRequiredMoves = []
     if Types.Key in spoiler.settings.shuffled_location_types:  # If keys are to be shuffled, they won't be shuffled yet
         settingsRequiredMoves = ItemPool.BlueprintAssumedItems().copy()  # We want Keys/Company Coins/Crowns here and this is a convenient collection
-    unplaced = PlaceItems(spoiler.settings, "assumed", itemsToPlace, settingsRequiredMoves)
+    unplaced = PlaceItems(spoiler.settings, "forward", itemsToPlace, settingsRequiredMoves)
     if unplaced > 0:
         # debug code - outputs all preplaced and shared items in an attempt to find where things are going wrong
         locationsAndMoves = {}
