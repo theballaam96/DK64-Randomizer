@@ -6,6 +6,7 @@ from randomizer.Spoiler import Spoiler
 from randomizer.Enums.Types import Types
 from randomizer.Enums.Locations import Locations
 from randomizer.Patching.Lib import intf_to_float, float_to_hex
+from randomizer.Lists.FlagItemTable import FlagTable
 
 model_two_indexes = {
     Types.Banana: 0x74,
@@ -212,6 +213,13 @@ def place_randomized_items(spoiler: Spoiler):
         bonus_table_offset = 0
         flut_items = []
         for item in item_data:
+            if item.new_flag in FlagTable:
+                if item.new_item != FlagTable[item.new_flag].item_type:
+                    print(item.location)
+                    print(item)
+                item.new_item = FlagTable[item.new_flag].item_type
+                if FlagTable[item.new_flag].item_kong is not None:
+                    item.new_kong = FlagTable[item.new_flag].item_kong
             if item.can_have_item:
                 if item.is_shop:
                     # Write in placement index
