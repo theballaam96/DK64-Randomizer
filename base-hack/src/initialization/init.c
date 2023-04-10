@@ -372,6 +372,9 @@ void initHack(int source) {
 			*(unsigned char*)(0x8064A305) = chunky_reg_vals[(int)Rando.chunky_face_puzzle_init[8]];
 			insertROMMessages();
 			LoadedHooks = 1;
+			// Meme changes
+			*(short*)(0x806D3682) = 0x4248; // Change fall too far threshold to 80
+			*(int*)(0x806677C4) = 0; // Force water damage
 		}
 	}
 }

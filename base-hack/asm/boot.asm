@@ -252,6 +252,9 @@ PauseSpriteHook:
 HandleSlamCheckHook:
 	J 	HandleSlamCheck
 	NOP
+alterWaterSurfaceHook:
+	J 	alterWaterSurface
+	NOP
 
 loadExtraHooks:
 	LUI t3, hi(InstanceScriptHook)
@@ -259,6 +262,12 @@ loadExtraHooks:
 	LUI t4, 0x8064
 	SW t3, 0xEE08 (t4) // Store Hook
 	SW r0, 0xEE0C (t4) // Store NOP
+	
+	//LUI t3, hi(alterWaterSurfaceHook)
+	//LW t3, lo(alterWaterSurfaceHook) (t3)
+	//LUI t4, 0x8066
+	//SW t3, 0xF290 (t4) // Store Hook
+	//SW r0, 0xF294 (t4) // Store NOP
 	
 	LUI t3, hi(ItemRandoFlagCheckHook)
 	LW t3, lo(ItemRandoFlagCheckHook) (t3)

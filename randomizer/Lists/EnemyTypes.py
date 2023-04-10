@@ -133,6 +133,14 @@ class EnemyData:
         """Initialize with given parameters."""
         self.name = name
         self.aggro = aggro
+        min_speed *= 1.5
+        max_speed *= 1.5
+        if min_speed < 125:
+            min_speed = 125
+        if min_speed > 255:
+            min_speed = 255
+        if max_speed > 255:
+            max_speed = 255
         self.min_speed = min_speed
         self.max_speed = max_speed
         self.crown_enabled = crown_enabled

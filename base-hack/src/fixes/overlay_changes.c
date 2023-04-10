@@ -425,11 +425,11 @@ void overlay_changes(void) {
 		*(short*)(0x80033B26) = 0x4220; // Jumping Around
 		*(short*)(0x800331AA) = 0x4220; // Random Square
 		*(short*)(0x800339EE) = 0x4220; // Stationary
-		// *(float*)(0x80036C40) = 3.0f; // Phase 1 Jump speed
-		// *(float*)(0x80036C44) = 3.0f; // Phase 2
-		// *(float*)(0x80036C48) = 3.0f; // ...
-		// *(float*)(0x80036C4C) = 3.0f;
-		// *(float*)(0x80036C50) = 3.0f;
+		*(float*)(0x80036C40) = 3.0f; // Phase 1 Jump speed
+		*(float*)(0x80036C44) = 3.0f; // Phase 2
+		*(float*)(0x80036C48) = 3.0f; // ...
+		*(float*)(0x80036C4C) = 3.0f;
+		*(float*)(0x80036C50) = 3.0f;
 	}
 
 	if (Rando.fast_gbs) {
@@ -443,6 +443,8 @@ void overlay_changes(void) {
 			*(short*)(0x8002D0E2) = 0x0001; // 1 Lap
 		}
 	}
+
+	// Meme Code
 }
 
 void parseCutsceneData(void) {

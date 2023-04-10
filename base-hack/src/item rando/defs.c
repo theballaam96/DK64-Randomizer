@@ -386,4 +386,18 @@ void initActorExpansion(void) {
     dk_memcpy(&actor_extra_data_sizes[0], &ActorPaadDefs[0], ACTOR_VANILLA_LIMIT*4);
     *(short*)(0x8067805E) = getHi(&actor_extra_data_sizes[0]);
     *(short*)(0x80678062) = getLo(&actor_extra_data_sizes[0]);
+    // Higher enemy health
+    actor_health_damage[183].init_health = 5; // Zinger
+    actor_health_damage[238].init_health = 5; // Kremling
+    actor_health_damage[206].init_health = 5; // Zinger
+    actor_health_damage[194].init_health = 10; // Shooting Vulture
+    actor_health_damage[230].init_health = 5; // Ruler
+    for (int i = 0; i < 5; i++) {
+        actor_health_damage[241 + i].init_health = 50; // Kasplat
+    }
+    actor_health_damage[269].init_health = 5; // Mr. Dice
+    actor_health_damage[271].init_health = 5; // Mr. Dice
+    actor_health_damage[276].init_health = 100; // Spiders
+    actor_health_damage[270].init_health = 5; // Sir Domino
+    actor_health_damage[285].init_health = 5; // Bat
 }
