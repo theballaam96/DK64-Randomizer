@@ -139,3 +139,7 @@
 .definelabel spawnTimer, 0x806A2A10
 .definelabel initTimer, 0x806A2B08
 .definelabel mushroomBounce, 0x806CBE44
+.definelabel collisionStuff, 0x80678BBC
+.definelabel unkActorHandler, 0x80678CC8
+.definelabel getScreenDist, 0x80700AE4
+.definelabel getDistanceCap, 0x807009F4

@@ -13,8 +13,7 @@
 #include "../../include/common.h"
 
 static char music_storage[MUSIC_SIZE];
-
-unsigned char BigHeadMode = 0;
+unsigned char HeadSize[MODEL_COUNT];
 
 char music_types[SONG_COUNT] = {
 	-1,
@@ -289,10 +288,8 @@ void loadHooks(void) {
 	if (MenuDarkness != 0) {
 		loadSingularHook(0x807070A0, &RecolorMenuBackground);
 	}
-	if (Rando.big_head_mode) {
-		loadSingularHook(0x8061A4C8, &AlterHeadSize);
-		loadSingularHook(0x806198D4, &AlterHeadSize_0);
-	}
+	loadSingularHook(0x8061A4C8, &AlterHeadSize);
+	loadSingularHook(0x806198D4, &AlterHeadSize_0);
 }
 
 void initHack(int source) {
@@ -317,11 +314,6 @@ void initHack(int source) {
 			KrushaSlot = Rando.krusha_slot;
 			RandomSwitches = Rando.random_switches;
 			DamageMultiplier = Rando.damage_multiplier; // Keep for Crowd Control. Needs it to know what to set damage mult back to
-			if (Rando.big_head_mode == 1) {
-				BigHeadMode = 0xFF;
-			} else if (Rando.big_head_mode == 2) {
-				BigHeadMode = 0x2F;
-			}
 			// HUD Re-allocation fixes
 			*(short*)(0x806FB246) = ITEMID_TERMINATOR;
 			*(short*)(0x806FABAA) = ITEMID_TERMINATOR;
